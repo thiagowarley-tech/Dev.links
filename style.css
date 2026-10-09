@@ -1,0 +1,218 @@
+/* Reset de margin e padding para todos os elementos da tela, confiuraçoes padroes do navegador */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Variaveis de cor ( Para definir uma variavel de cor, usamos a sintaxe --nome-da-variavel: valor-da-variavel; ) */
+
+:root {
+    --text-color: white;
+    --bg-url: url(./assets/assets/bg-mobile.jpg);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.05);
+    --surface-color-hover: rgba(255, 255, 255, 0.02);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+    --switch-bg: url(./assets/assets/moon-stars.svg);   
+}
+
+.light {
+    --text-color: black;
+    --bg-url: url(./assets/assets/bg-mobile-light.jpg);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(0, 0, 0, 0.1);
+    --switch-bg: url(./assets/assets/sun.svg);   
+}
+
+body {
+    /*
+    background-image: url(./assets/assets/bg-mobile.jpg);  (imagem de fundo)
+    background-repeat: no-repeat;  (não repetir a imagem)
+    background-position: top center;   (centralizar a imagem)
+    background-size: cover;   (ajustar a imagem para cobrir toda a tela)
+    */
+
+    /* agrupar propriedades de background em uma única linha */
+    background: var(--bg-url) no-repeat top center / cover;
+}
+
+/*
+    * ( Seletor universal, seleciona todos os elementos da tela e coloca cor, fonte e etc )
+*/
+
+body * {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+
+#container {
+    width: 360px;
+    height: 712px;
+
+    margin: auto; /* Centraliza o container na tela */  
+    padding: 0 24px; /* Coloca um padding de 24px nas laterais do container */
+
+
+    /* Propiedades margin
+        margin-top: 56px; ( Margem de cima )
+        margin-right: 0px; ( Margem da direita )
+        margin-bottom: 0px; ( Margem de baixo )
+        margin-left: 0px; ( Margem da esquerda )
+        ( Para definir a margem de todos os lados de uma vez so, podemos usar a propriedade margin: 56px 0px 0px 0px; ( Margem de cima, direita, baixo e esquerda ) ) 
+    */
+}
+
+/* Propriedades de display:
+    display: none; ( Tira o elemento da tela, mas ele ainda existe no código)
+    display: block; ( Pega o seu elemento e da toda a sua largura para a tela e qualquer elemento abaixo dele ficar abaixo dele ( ou do border )  isso tudo sem ter uma largura fixa)
+
+*/
+
+/* Elementos block (Eh possivel colocar o margin auto neles somente com o display block)
+    <div> ( elementos block por padrão )
+    <p> ( elementos block por padrão )
+    <h1> ( elementos block por padrão, o restante de h2 a h6 também são block por padrão )
+*/
+
+/* Elementos inline ( Não e possivel colocar o margin auto neles )
+    <a ( elementos inline por padrão )
+    <img ( elementos inline por padrão e não e possivel colocar o margin auto nele )   
+
+    ( Eh possivel colocar o text-align center no pai do elemento para definir se ele ficara centralizado, ou para a esquerda ou para a direita )
+*/
+
+#profile {
+    text-align: center;
+    padding: 24px;
+}
+
+#profile img {
+    width: 112px;  
+}
+
+/* Propriedades do profile p ( Paragrafo do perfil )
+    font-size: 16px; ( Tamanho padrão ja definido pelo navegador )
+    font-weight: 500; ( Peso da fonte ) pode ser mais leve ou mais pesado, dependendo da fonte que você estiver usando
+    line-height: 24px; ( Altura da linha, ou seja, o espaço entre uma linha e outra )
+*/
+
+#profile p {
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 8px;
+}
+
+#switch {
+    position: relative;
+    width: 64px;
+
+    margin: 4px auto;
+
+}
+
+#switch button {
+    width: 32px;
+    height: 32px;
+    background: white var(--switch-bg) no-repeat center;
+
+    border: 0;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+.light #switch button {
+    right: auto;
+}
+
+#switch span {
+    display: block;
+    width: 64px;
+    height: 24px;
+
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+
+    -webkit-backdrop-filter: blur(4px);
+
+    border-radius: 9999px;
+}
+
+ul {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 24px 0;
+}
+
+ul li a {
+
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+
+    padding: 16px 24px;
+
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+
+    text-decoration: none;
+    font-weight: 500; /* Peso da fonte ( acima de 400 é considerado bold ) */
+
+    transition: background 0.2s;
+
+    /* text-decoration: none; ( Tira o sublinhado do link )
+        text-decoration: underline; ( Coloca o sublinhado no link )
+        text-decoration: line-through; ( Coloca uma linha no meio do link )
+    */ 
+}
+
+/* pseudo-selector :hover ( Quando o mouse passa por cima do elemento ) */
+
+ul li a:hover {
+    background: var(--surface-color-hover);
+    border: 1px solid var(--text-color);
+}
+
+#social-links {
+    display: flex;
+    justify-content: center;
+
+    padding: 24px 0;
+
+    font-size: 24px;
+}
+
+#social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px;
+
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+#social-links a:hover {
+    background: var(--highlight-color);
+}
+
+footer {
+    padding: 24px 0;
+    text-align: center;
+
+    font-size: 14px;
+}
